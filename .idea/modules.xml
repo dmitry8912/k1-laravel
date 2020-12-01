@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/k1-api.iml" filepath="$PROJECT_DIR$/.idea/k1-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../MobileApps/k1-quasar/.idea/k1-quasar.iml" filepath="$PROJECT_DIR$/../../MobileApps/k1-quasar/.idea/k1-quasar.iml" />
+    </modules>
+  </component>
+</project>
