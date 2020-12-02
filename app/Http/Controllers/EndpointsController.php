@@ -43,6 +43,14 @@ class EndpointsController extends Controller
         return ['id' => $id];
     }
 
+    public function getLocks(string $id) {
+        $lock = Endpoints::find($id);
+        if($lock == null) {
+            return response(['error' => 'No endpoint found'],400);
+        }
+        return Endpoints::find($id)->with('locks')->first();
+    }
+
     public function connect(string $id) {
         /*if(Endpoints::find($id)->bookings()->where('from', '=', date('d.m.Y'))->orWhere('to', '=', date('d.m.Y'))->count() > 0){
             return response([
@@ -82,7 +90,7 @@ class EndpointsController extends Controller
         if($lock == null) {
             return response(['error' => 'Wrong code'],400);
         }
-        return Endpoints::find($lock->endpointId)->with('credential')->with('gateway')->get();
+        return Endpoints::find($lock->endpointId)->with('credential')->with('gateway')->first();
     }
 
     /*public function addBooking(string $id, Request $request) {

@@ -40,6 +40,7 @@ Route::middleware('auth:api')->group(function() {
         Route::post('/', [\App\Http\Controllers\EndpointsController::class, 'add']);
         Route::put('/{id}', [\App\Http\Controllers\EndpointsController::class, 'update']);
         Route::delete('/{id}', [\App\Http\Controllers\EndpointsController::class, 'delete']);
+        Route::get('/locks/{id}', [\App\Http\Controllers\EndpointsController::class, 'getLocks']);
         Route::prefix('direct')->group(function() {
             Route::get('/lock/{id}', [\App\Http\Controllers\EndpointsController::class, 'connect']);
             Route::get('/extend/{id}', [\App\Http\Controllers\EndpointsController::class, 'extend']);
@@ -50,5 +51,12 @@ Route::middleware('auth:api')->group(function() {
             Route::get('/add/{id}', [\App\Http\Controllers\EndpointsController::class, 'addBooking']);
             Route::get('/delete/{id}', [\App\Http\Controllers\EndpointsController::class, 'deletBooking']);
         });
+    });
+});
+
+Route::prefix('endpoints')->group(function() {
+    Route::prefix('direct')->group(function() {
+        Route::get('/extend/{id}', [\App\Http\Controllers\EndpointsController::class, 'extend']);
+        Route::get('/info/{id}', [\App\Http\Controllers\EndpointsController::class, 'lockInfo']);
     });
 });
