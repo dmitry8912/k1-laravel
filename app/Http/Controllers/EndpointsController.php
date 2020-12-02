@@ -90,7 +90,7 @@ class EndpointsController extends Controller
         if($lock == null) {
             return response(['error' => 'Wrong code'],400);
         }
-        return Endpoints::find($lock->endpointId)->with('credential')->with('gateway')->first();
+        return Endpoints::where('id',$lock->endpointId)->with('credential')->with('gateway')->first();
     }
 
     /*public function addBooking(string $id, Request $request) {
